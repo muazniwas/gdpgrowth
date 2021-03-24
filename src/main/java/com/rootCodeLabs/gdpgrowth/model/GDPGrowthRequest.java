@@ -30,4 +30,10 @@ public class GDPGrowthRequest {
     public void setToYear(Integer toYear) {
         this.toYear = toYear;
     }
+
+    public GDPGrowthRequest(String countryCode, Integer fromYear, Integer toYear) {
+        this.countryCode = countryCode;
+        this.fromYear = fromYear;
+        this.toYear = toYear;
+    }
 }

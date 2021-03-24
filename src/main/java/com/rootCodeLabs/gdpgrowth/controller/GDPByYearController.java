@@ -20,8 +20,11 @@ public class GDPByYearController {
     @Autowired
     GDPByYearService gdpByYearService;
 
-    @GetMapping("/gdp-growth")
-    public ResponseEntity getGdpGrowth(@RequestBody GDPGrowthRequest gdpGrowthRequest) {
+    @GetMapping("/gdp-growth/{countryCode}")
+    public ResponseEntity getGdpGrowth(@PathVariable String countryCode,
+                                       @RequestParam Integer fromYear,
+                                       @RequestParam Integer toYear) {
+        GDPGrowthRequest gdpGrowthRequest = new GDPGrowthRequest(countryCode, fromYear, toYear);
         Validate validate = new Validate();
         if(!validate.growthRequest(gdpGrowthRequest)) {
             throw new ValidationException("Invalid Request");
